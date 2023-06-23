@@ -5,6 +5,7 @@
 # TODO: Criar um asset para cada imagem.
 # TODO: Auto materializar assets.
 # TODO: dagster venv - Anselmo e Reginaldo.
+# TODO: Comment everything.
 
 import os # For creating folders
 import pandas as pd # For data manipulation
