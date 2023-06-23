@@ -1,20 +1,30 @@
-# Dagster + Jupyter/Papermill
+# Dagster - Modelo de Educação
 
-Este exemplo mostra como executar um código em Jupyter Notebook no Dagster.
+Este exemplo é feito como a tradução do modelo de educação do Jupyer notebook para o Dagster.
 
 ---
 
 ## Getting started
 
-Para instalar as dependencias desse projeto execute:
+Para instalar as dependencias desse projeto você dar um git clone desse [repositorio](https://dev.azure.com/dtwy/Dtw%20Analytics%20Dev/_git/Atlas-Dagster-Fabric), pois ele contém pastas necessárias para a instalação do Python 3.7.17 e suas dependencias.  
+As pastas que serão usadas são: `js_modules`, `pyright` e `python_modules`. Depois que você copiar essas pastas para o seu computador para o diretório raiz do projeto, você pode executar o comando abaixo para instalar as dependencias do projeto.
 
 ```shell
-cd my-dagster-project
-pip install -e ".[dev]"
+	chmod +x ./prerequisites.sh # Irá dar permissão de execução para o arquivo
+	./prerequisites.sh # Irá instalar as dependencias do projeto
+	chmod +x ./backend.sh # Irá dar permissão de execução para o arquivo
+	./backend.sh # Irá instalar as dependencias do projeto
 ```
 
-Neste ponto, você pode abrir a IU do Dagster e ver o tutorial finalizado. Conforme você trabalha no tutorial, o modelo será preenchido e ficará visível na interface do usuário.
+Agora que você já tem o Python 3.7.17 instalado e as dependencias do Dagster, abra um terminal novo e execute os comandos abaixo para iniciar o Dagster.
 
 ```shell
-dagster dev -h 0.0.0.0 -p 3000
+	cd Dagster-Educacao # Irá entrar na pasta do projeto
+	pyenv activate dagster-dtwy # Irá ativar o ambiente virtual do Python
+	make dependencies # Irá instalar o pandas, matplotlib, seaborn e scikit-learn
+```
+
+Neste ponto, você pode abrir a IU do Dagster e ver a execução do código.
+```shell
+dagster dev -h 0.0.0.0 -p 3000 # Irá iniciar a IU do Dagster
 ```
