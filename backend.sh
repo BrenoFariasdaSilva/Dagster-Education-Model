@@ -1,10 +1,10 @@
 #!/bin/bash -i
 
-pyenv install 3.9.16
+pyenv install 3.7.17
 
-echo "Python 3.9.16 instalado com sucesso"
+echo "Python 3.7.17 instalado com sucesso"
 
-pyenv virtualenv 3.9.16 dagster-dtw
+pyenv virtualenv 3.7.17 dagster-dtw
 
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
