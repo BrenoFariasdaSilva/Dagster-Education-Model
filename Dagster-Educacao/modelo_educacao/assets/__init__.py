@@ -6,11 +6,12 @@
 # TODO: Auto materializar assets.
 # TODO: dagster venv - Anselmo e Reginaldo.
 
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-from sklearn.linear_model import LinearRegression
-from dagster import op, job, Out, AssetMaterialization
+import os # For creating folders
+import pandas as pd # For data manipulation
+import matplotlib.pyplot as plt # For plotting
+import seaborn as sns # For plotting
+from sklearn.linear_model import LinearRegression # For regression
+from dagster import op, job, Out, AssetMaterialization # For dagster
 
 @op
 def read_escolas_csv(context):
@@ -18,6 +19,11 @@ def read_escolas_csv(context):
     len_escolas = len(escolas)
     # print(escolas.head())
     return escolas
+
+@op
+def validate_output_folder(context):
+    if not os.path.exists('./modelo_educacao/output'):
+        os.makedirs('./modelo_educacao/output')
 
 @op
 def analyze_fundamental_qtd(context, escolas):
@@ -107,6 +113,7 @@ def analyze_infantil_prof_aux_regression(context, infantil_only):
 @job
 def data_analysis_pipeline():
     escolas = read_escolas_csv()
+    validate_output_folder()
     analyze_fundamental_qtd(escolas) # 1º Image
     analyze_infantil_qtd(escolas) # 2º Image
     filtered_data = filter_data(escolas) # 3º Image
