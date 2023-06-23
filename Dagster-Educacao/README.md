@@ -4,10 +4,9 @@ Este exemplo é feito como a tradução do modelo de educação do Jupyer notebo
 
 ---
 
-## Getting started
-
-Para instalar as dependencias desse projeto você dar um git clone desse [repositorio](https://dev.azure.com/dtwy/Dtw%20Analytics%20Dev/_git/Atlas-Dagster-Fabric), pois ele contém pastas necessárias para a instalação do Python 3.7.17 e suas dependencias.  
-As pastas que serão usadas são: `js_modules`, `pyright` e `python_modules`. Depois que você copiar essas pastas para o seu computador para o diretório raiz do projeto, você pode executar o comando abaixo para instalar as dependencias do projeto.
+## Install Dependencies:
+#### Dagster Dependencies:
+você pode executar o comando abaixo para instalar as dependencias do projeto.
 
 ```shell
 	chmod +x ./prerequisites.sh # Irá dar permissão de execução para o arquivo
@@ -15,7 +14,7 @@ As pastas que serão usadas são: `js_modules`, `pyright` e `python_modules`. De
 	chmod +x ./backend.sh # Irá dar permissão de execução para o arquivo
 	./backend.sh # Irá instalar as dependencias do projeto
 ```
-
+#### Python Dependencies:
 Agora que você já tem o Python 3.7.17 instalado e as dependencias do Dagster, abra um terminal novo e execute os comandos abaixo para iniciar o Dagster.
 
 ```shell
@@ -24,6 +23,7 @@ Agora que você já tem o Python 3.7.17 instalado e as dependencias do Dagster, 
 	make dependencies # Irá instalar o pandas, matplotlib, seaborn e scikit-learn
 ```
 
+## How to Run:
 Neste ponto, você pode abrir a IU do Dagster e ver a execução do código.
 ```shell
 dagster dev -h 0.0.0.0 -p 3000 # Irá iniciar a IU do Dagster
