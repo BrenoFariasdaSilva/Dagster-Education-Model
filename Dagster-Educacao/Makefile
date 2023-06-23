@@ -1,5 +1,5 @@
 all:
-	# make sure your inside "pyenv activate dagster-dtwy"
+	# Make sure you are inside "dagster-dtwy" virtual environment with "pyenv activate dagster-dtwy".
 	clear;
 	dagster dev -h 0.0.0.0 -p 3000
 
