@@ -12,9 +12,9 @@ import pandas as pd # For data manipulation
 import matplotlib.pyplot as plt # For plotting
 import seaborn as sns # For plotting
 from sklearn.linear_model import LinearRegression # For regression
-from dagster import op, job, Out, AssetMaterialization # For dagster
+from dagster import asset, op, job, Out, AssetMaterialization # For dagster
 
-@op
+@asset
 def read_escolas_csv(context):
     escolas = pd.read_csv('modelo_educacao/data/mview_escolas_202302271652.csv', sep=';')
     len_escolas = len(escolas)
