@@ -6,7 +6,7 @@ Este exemplo é feito como a tradução do modelo de educação do Jupyer notebo
 
 ## Install Dependencies:
 #### Dagster Dependencies:
-você pode executar o comando abaixo para instalar as dependencias do projeto.
+Você pode executar o comando abaixo para instalar as dependencias do projeto.
 
 ```shell
 	chmod +x ./prerequisites.sh # Irá dar permissão de execução para o arquivo
