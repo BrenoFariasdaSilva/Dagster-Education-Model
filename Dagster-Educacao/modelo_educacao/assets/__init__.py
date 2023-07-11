@@ -13,6 +13,12 @@ import matplotlib.pyplot as plt # For plotting
 import seaborn as sns # For plotting
 from sklearn.linear_model import LinearRegression # For regression
 from dagster import asset, op, job, Out, AssetMaterialization # For dagster
+from dotenv import load_dotenv
+# import the /DTWModules/dtwdatabase.py class that is named DTWDataBase
+# from modelo_educacao.DTWModules import DTWDataBase
+from ..dataBaseModule.database import DataBase
+
+load_dotenv(dotenv_path=r".env")
 
 @asset
 def read_escolas_csv(context):
@@ -113,6 +119,8 @@ def analyze_infantil_prof_aux_regression(context, infantil_only):
 
 @job
 def data_analysis_pipeline():
+    db = DataBase()
+    db.connect()
     escolas = read_escolas_csv()
     validate_output_folder()
     analyze_fundamental_qtd(escolas) # 1º Image
