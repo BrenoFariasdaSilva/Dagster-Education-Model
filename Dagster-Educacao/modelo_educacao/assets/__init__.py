@@ -14,8 +14,6 @@ import seaborn as sns # For plotting
 from sklearn.linear_model import LinearRegression # For regression
 from dagster import asset, op, job, Out, AssetMaterialization # For dagster
 from dotenv import load_dotenv
-# import the /DTWModules/dtwdatabase.py class that is named DTWDataBase
-# from modelo_educacao.DTWModules import DTWDataBase
 from ..dataBaseModule.database import DataBase
 
 current_path = os.getcwd().split("/")[-1]
