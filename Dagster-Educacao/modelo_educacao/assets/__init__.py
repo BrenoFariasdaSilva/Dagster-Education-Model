@@ -1,10 +1,10 @@
 # TODO: Dagster cloud - Igor e Reginaldo.
     # Se funcionar, pegar o exemplo de classificação (forecast).
     # Dagster cloud tá rodando no python 3.7.17
-# TODO: Olhar imagens 4 e 5, pois estão erradas.
 # TODO: Criar um asset para cada imagem.
 # TODO: Auto materializar assets.
 # TODO: dagster venv - Anselmo e Reginaldo.
+# TODO: Docker compose para usar sempre o mesmo IP.
 # TODO: Comment everything.
 
 import os # For creating folders
@@ -18,7 +18,12 @@ from dotenv import load_dotenv
 # from modelo_educacao.DTWModules import DTWDataBase
 from ..dataBaseModule.database import DataBase
 
-load_dotenv(dotenv_path=r".env")
+current_path = os.getcwd().split("/")[-1]
+substring_start = __file__.rfind(current_path) + len(current_path) + 1
+substring_end = __file__.find("/assets")
+dotenv_path = __file__[substring_start:substring_end] + "/dataBaseModule/.env"
+
+load_dotenv(dotenv_path=dotenv_path)
 
 @asset
 def read_escolas_csv(context):
