@@ -1,4 +1,4 @@
-# Dagster - Modelo de Educação
+# Dagster-EducationModel
 
 Este exemplo é feito como a tradução do modelo de educação do Jupyer notebook para o Dagster.
 
@@ -26,5 +26,5 @@ Agora que você já tem o Python 3.7.17 instalado e as dependencias do Dagster, 
 ## How to Run:
 Neste ponto, você pode abrir a IU do Dagster e ver a execução do código.
 ```shell
-dagster dev -h 0.0.0.0 -p 3000 # Irá iniciar a IU do Dagster
+clear; dagster dev -h 0.0.0.0 -p 3000 # Irá iniciar a IU do Dagster
 ```

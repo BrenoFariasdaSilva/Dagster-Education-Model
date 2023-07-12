@@ -1,10 +1,10 @@
 # TODO: Dagster cloud - Igor e Reginaldo.
     # Se funcionar, pegar o exemplo de classificação (forecast).
     # Dagster cloud tá rodando no python 3.7.17
-# TODO: Olhar imagens 4 e 5, pois estão erradas.
 # TODO: Criar um asset para cada imagem.
 # TODO: Auto materializar assets.
 # TODO: dagster venv - Anselmo e Reginaldo.
+# TODO: Docker compose para usar sempre o mesmo IP.
 # TODO: Comment everything.
 
 import os # For creating folders
@@ -13,6 +13,17 @@ import matplotlib.pyplot as plt # For plotting
 import seaborn as sns # For plotting
 from sklearn.linear_model import LinearRegression # For regression
 from dagster import asset, op, job, Out, AssetMaterialization # For dagster
+from dotenv import load_dotenv
+# import the /DTWModules/dtwdatabase.py class that is named DTWDataBase
+# from modelo_educacao.DTWModules import DTWDataBase
+from ..dataBaseModule.database import DataBase
+
+current_path = os.getcwd().split("/")[-1]
+substring_start = __file__.rfind(current_path) + len(current_path) + 1
+substring_end = __file__.find("/assets")
+dotenv_path = __file__[substring_start:substring_end] + "/dataBaseModule/.env"
+
+load_dotenv(dotenv_path=dotenv_path)
 
 @asset
 def read_escolas_csv(context):
@@ -113,6 +124,8 @@ def analyze_infantil_prof_aux_regression(context, infantil_only):
 
 @job
 def data_analysis_pipeline():
+    db = DataBase()
+    db.connect()
     escolas = read_escolas_csv()
     validate_output_folder()
     analyze_fundamental_qtd(escolas) # 1º Image
