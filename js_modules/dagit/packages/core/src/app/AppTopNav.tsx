@@ -186,13 +186,13 @@ export const GhostDaggyWithTooltip = () => {
       modifiers={{offset: {enabled: true, options: {offset: [0, 18]}}}}
     >
       <Link to="/home">
-        <LogoDataway/>
+        <Logo/>
       </Link>
     </DaggyTooltip>
   );
 };
 
-const LogoDataway = () => {
+const Logo = () => {
  return <img src={logo} alt="Logo" style={{width:100}}/>;
 };
 
