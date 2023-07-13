@@ -1,12 +1,3 @@
-# TODO: Dagster cloud - Igor e Reginaldo.
-    # Se funcionar, pegar o exemplo de classificação (forecast).
-    # Dagster cloud tá rodando no python 3.7.17
-# TODO: Criar um asset para cada imagem.
-# TODO: Auto materializar assets.
-# TODO: dagster venv - Anselmo e Reginaldo.
-# TODO: Docker compose para usar sempre o mesmo IP.
-# TODO: Comment everything.
-
 import os # For creating folders
 import pandas as pd # For data manipulation
 import matplotlib.pyplot as plt # For plotting
