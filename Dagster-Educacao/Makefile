@@ -1,3 +1,6 @@
+# Set the pyenv environment
+export PYENV_VERSION=dagster-dtw
+
 all:
 	clear;
 	docker-compose up -d
