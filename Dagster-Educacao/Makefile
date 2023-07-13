@@ -40,3 +40,8 @@ docker_compose:
 dependencies:
 	clear;
 	pip install pandas matplotlib seaborn scikit-learn
+
+# Run the dagster project:
+dagster:
+	clear;
+	dagster dev -h 0.0.0.0 -p 3000
