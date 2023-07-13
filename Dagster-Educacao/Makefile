@@ -2,7 +2,7 @@
 # Last update: 13/07/2023
 
 # Set the pyenv environment where the commands will be executed:
-export PYENV_VERSION=dagster-dtw
+export PYENV_VERSION=dagster
 
 # Run all of the makefile rules:
 all:

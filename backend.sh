@@ -4,12 +4,12 @@ pyenv install 3.7.17
 
 echo "Python 3.7.17 instalado com sucesso"
 
-pyenv virtualenv 3.7.17 dagster-dtw
+pyenv virtualenv 3.7.17 dagster
 
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
-pyenv activate dagster-dtw
+pyenv activate dagster
 
 brew install yarn
 
