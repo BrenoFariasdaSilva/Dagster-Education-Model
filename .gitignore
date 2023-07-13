@@ -330,7 +330,7 @@ pyrightconfig.json
 # Scripts working directory
 scripts/.build
 
-/Dagster-Educacao/tmp*
+/Dagster-Model/tmp*
 
-/Dagster-Educacao/education_model/processed_data/
-/Dagster-Educacao/education_model/data/
+/Dagster-Model/education_model/processed_data/
+/Dagster-Model/education_model/data/
