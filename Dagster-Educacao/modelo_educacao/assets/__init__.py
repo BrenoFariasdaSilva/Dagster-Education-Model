@@ -4,15 +4,15 @@ import matplotlib.pyplot as plt # For plotting
 import seaborn as sns # For plotting
 from sklearn.linear_model import LinearRegression # For regression
 from dagster import asset, op, job, Out, AssetMaterialization # For dagster
-from dotenv import load_dotenv
-from ..dataBaseModule.database import DataBase
+from dotenv import load_dotenv # For loading .env files
+from ..dataBaseModule.database import DataBase # For database connection
 
 current_path = os.getcwd().split("/")[-1]
 substring_start = __file__.rfind(current_path) + len(current_path) + 1
 substring_end = __file__.find("/assets")
 dotenv_path = __file__[substring_start:substring_end] + "/dataBaseModule/.env"
 
-load_dotenv(dotenv_path=dotenv_path)
+load_dotenv(dotenv_path=dotenv_path) # Load .env file from the dataBaseModule folder
 
 @asset
 def read_escolas_csv(context):
@@ -113,8 +113,8 @@ def analyze_infantil_prof_aux_regression(context, infantil_only):
 
 @job
 def data_analysis_pipeline():
-    db = DataBase()
-    db.connect()
+    db = DataBase() # Get an instance of the DataBase class
+    db.connect() # Connect to the database
     escolas = read_escolas_csv()
     validate_output_folder()
     analyze_fundamental_qtd(escolas) # 1º Image
