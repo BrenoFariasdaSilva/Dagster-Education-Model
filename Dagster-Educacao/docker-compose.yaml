@@ -1,19 +1,20 @@
-version: "3"
-services:
-  postgres:
-    image: postgres
-    container_name: some-postgres
-    environment:
-      - POSTGRES_PASSWORD=senha123
-    networks:
-      mynetwork:
-        ipv4_address: 172.20.0.10
-    ports:
-      - 5432:5432
-    restart: unless-stopped
+version: '3'  # Version of the Docker Compose file syntax being used
 
-networks:
-  mynetwork:
-    ipam:
+services: # Define the services/containers being used. Services are containers which are built from the images we specify in the 'image' field
+  postgres: # Define a service named 'postgres'
+    image: postgres  # Use the 'postgres' Docker image for the PostgreSQL service
+    container_name: some-postgres  # Set the container name to 'some-postgres'
+    environment: # Set environment variables for the container
+      - POSTGRES_PASSWORD=senha123  # Set the environment variable 'POSTGRES_PASSWORD' to 'senha123'
+    networks: # Define the networks the container should be connected to
+      mynetwork:  # Connect the container to the 'mynetwork' network
+        ipv4_address: 172.20.0.10  # Assign the IP address '172.20.0.10' to the container
+    ports: # Expose ports on the host
+      - 5432:5432  # Map host port 5432 to container port 5432
+    restart: unless-stopped  # Restart the container unless explicitly stopped
+
+networks: # Define the networks being used
+  mynetwork:  # Define a custom network named 'mynetwork'
+    ipam:  # IP Address Management (IPAM) configuration for the network
       config:
-        - subnet: 172.20.0.0/16
+        - subnet: 172.20.0.0/16  # Specify the IP address subnet for the network as '172.20.0.0/16'
