@@ -9,7 +9,7 @@ class DataBase:
     dotenv_path = r".env"
     def __init__(self):
         """
-        Método de inicialização da classe.
+        Class initialization method.
         """
         self.sql_alchemy = os.environ.get("SQLALCHEMY")
         self.connection = ""
@@ -17,71 +17,71 @@ class DataBase:
 
     def connect(self):
         """
-        Método de conexão com o banco de dados.
+        Method to connect to the database.
         """
         try:
             self.engine = create_engine(self.sql_alchemy)
             self.connection = self.engine.connect()
-            print("Conexão com banco de dados estabelecida com sucesso!")
+            print("Connection to the database established successfully!")
         except Exception as e:
-            print(f'Erro: {e}')
-            print("Falha ao criar conexão com banco de dados.")
+            print(f'Error: {e}')
+            print("Failed to create a connection to the database.")
 
     def disconnect(self):
         """
-        Método de desconexão com o banco de dados.
+        Method to disconnect from the database.
         """
         if self.connection != '':
             try:
                 self.connection.close()
                 self.connection = ''
-                print('Conexão com o banco de dados encerrada com sucesso!')
+                print('Connection to the database closed successfully!')
             except Exception as e:
-                print('Falha ao encerrar a conexão com o banco de dados.')
+                print('Failed to close the connection to the database.')
         else:
-            print('Conexão não estabelecida, não é necessário desconectar.')
+            print('No connection established, no need to disconnect.')
 
     def create_schema(self, name: str):
         """
-        Cria um esquema no banco de dados.
+        Creates a schema in the database.
 
         Args:
-            name: Nome do esquema.
+            name: Name of the schema.
         """
         if self.connection != "":
             try:
                 self.connection.execute(f"CREATE SCHEMA IF NOT EXISTS {name}")
-                print("Esquema criado com sucesso!")
+                print("Schema created successfully!")
             except Exception as e:
-                print("Falha ao criar o esquema.")
+                print("Failed to create the schema.")
         else:
-            print("Conexão não estabelecida, conecte-se ao banco de dados.")
+            print("No connection established, connect to the database.")
 
     def drop_schema(self, name: str):
         """
-        Remove um esquema do banco de dados.
+        Removes a schema from the database.
 
         Args:
-            name: Nome do esquema.
+            name: Name of the schema.
         """
         if self.connection != "":
             try:
                 self.connection.execute(f"DROP SCHEMA IF EXISTS {name} CASCADE")
-                print("Esquema removido com sucesso!")
+                print("Schema removed successfully!")
             except Exception as e:
-                print("Falha ao remover o esquema.")
+                print("Failed to remove the schema.")
         else:
-            print("Conexão não estabelecida, conecte-se ao banco de dados.")
+            print("No connection established, connect to the database.")
 
     def create_table(self, schema_name: str, table_name: str, column_names: List[str], column_types: List[str]):
         """
-        Cria uma nova tabela no esquema especificado.
+        Creates a new table in the specified schema.
 
         Args:
-            schema_name: Nome do esquema.
-            table_name: Nome da tabela.
-            column_names: Lista de nomes das colunas da tabela.
-            column_types: Lista de tipos das colunas da tabela.
+            schema_name: Name of the schema.
+            table_name: Name of the table.
+            column_names: List of column names for the table.
+            column_types: List of column types for the table.
         """
         if self.connection != "":
             try:
@@ -92,141 +92,141 @@ class DataBase:
                 column_str = ", ".join(columns)
                 query = f"CREATE TABLE IF NOT EXISTS {schema_name}.{table_name} ({column_str})"
                 self.connection.execute(query)
-                print(f"Tabela {schema_name}.{table_name} criada com sucesso!")
+                print(f"Table {schema_name}.{table_name} created successfully!")
             except Exception as e:
-                print(f"Falha ao criar a tabela {schema_name}.{table_name}. Erro: {str(e)}")
+                print(f"Failed to create table {schema_name}.{table_name}. Error: {str(e)}")
         else:
-            print("Conexão não estabelecida, conecte-se ao banco de dados.")
+            print("No connection established, connect to the database.")
 
     def drop_table(self, schema_name: str, table_name: str):
         """
-        Remove uma tabela do esquema especificado.
+        Removes a table from the specified schema.
 
         Args:
-            schema_name: Nome do esquema.
-            table_name: Nome da tabela.
+            schema_name: Name of the schema.
+            table_name: Name of the table.
         """
         if self.connection != "":
             try:
                 query = f"DROP TABLE IF EXISTS {schema_name}.{table_name}"
                 self.connection.execute(query)
-                print(f"Tabela {schema_name}.{table_name} removida com sucesso!")
+                print(f"Table {schema_name}.{table_name} removed successfully!")
             except Exception as e:
-                print(f"Falha ao remover a tabela {schema_name}.{table_name}.")
+                print(f"Failed to remove table {schema_name}.{table_name}.")
         else:
-            print("Conexão não estabelecida, conecte-se ao banco de dados.")
+            print("No connection established, connect to the database.")
 
     def truncate_table(self, schema_name: str, table_name: str):
         """
-        Exclui todas as linhas de uma tabela.
+        Deletes all rows from a table.
 
         Args:
-            schema_name: Nome do esquema.
-            table_name: Nome da tabela.
+            schema_name: Name of the schema.
+            table_name: Name of the table.
         """
         if self.connection != '':
             try:
                 query = f"TRUNCATE TABLE {schema_name}.{table_name}"
                 self.connection.execute(query)
-                print(f'Tabela {schema_name}.{table_name} truncada com sucesso!')
+                print(f'Table {schema_name}.{table_name} truncated successfully!')
             except Exception as e:
-                print(f'Falha ao truncar a tabela {schema_name}.{table_name}.')
+                print(f'Failed to truncate table {schema_name}.{table_name}.')
         else:
-            print('Conexão não estabelecida, conecte-se ao banco de dados.')
+            print('No connection established, connect to the database.')
 
     def create_view(self, view_name: str, query: str):
         """
-        Cria uma view.
+        Creates a view.
 
         Args:
-            view_name: Nome da view.
-            query: Consulta SQL da view.
+            view_name: Name of the view.
+            query: SQL query for the view.
         """
         if self.connection != '':
             try:
                 self.connection.execute(f"CREATE VIEW {view_name} AS {query}")
-                print(f'View {view_name} criada com sucesso!')
+                print(f'View {view_name} created successfully!')
             except Exception as e:
-                print(f'Falha ao criar a view {view_name}.')
+                print(f'Failed to create view {view_name}.')
         else:
-            print('Conexão não estabelecida, conecte-se ao banco de dados.')
+            print('No connection established, connect to the database.')
 
     def drop_view(self, view_name: str):
         """
-        Remove uma view.
+        Removes a view.
 
         Args:
-            view_name: Nome da view.
+            view_name: Name of the view.
         """
         if self.connection != '':
             try:
                 self.connection.execute(f"DROP VIEW IF EXISTS {view_name}")
-                print(f'View {view_name} removida com sucesso!')
+                print(f'View {view_name} removed successfully!')
             except Exception as e:
-                print(f'Falha ao remover a view {view_name}.')
+                print(f'Failed to remove view {view_name}.')
         else:
-            print('Conexão não estabelecida, conecte-se ao banco de dados.')
+            print('No connection established, connect to the database.')
 
     def create_materialized_view(self, view_name: str, query: str):
         """
-        Cria uma view materializada.
+        Creates a materialized view.
 
         Args:
-            view_name: Nome da view materializada.
-            query: Consulta SQL da view materializada.
+            view_name: Name of the materialized view.
+            query: SQL query for the materialized view.
         """
         if self.connection != '':
             try:
                 self.connection.execute(f"CREATE MATERIALIZED VIEW {view_name} AS {query}")
-                print(f'View materializada {view_name} criada com sucesso!')
+                print(f'Materialized view {view_name} created successfully!')
             except Exception as e:
-                print(f'Falha ao criar a view materializada {view_name}.')
+                print(f'Failed to create materialized view {view_name}.')
         else:
-            print('Conexão não estabelecida, conecte-se ao banco de dados.')
+            print('No connection established, connect to the database.')
 
     def refresh_materialized_view(self, schema_name: str, table_name: str):
         """
-        Atualiza uma view materializada.
+        Refreshes a materialized view.
 
         Args:
-            schema_name: Nome do esquema.
-            table_name: Nome da tabela (view materializada).
+            schema_name: Name of the schema.
+            table_name: Name of the table (materialized view).
         """
         if self.connection != '':
             try:
                 query = f"REFRESH MATERIALIZED VIEW {schema_name}.{table_name}"
                 self.connection.execute(query)
-                print(f'Tabela {schema_name}.{table_name} atualizada com sucesso!')
+                print(f'Table {schema_name}.{table_name} refreshed successfully!')
             except Exception as e:
-                print(f'Falha ao atualizar a tabela {schema_name}.{table_name}.')
+                print(f'Failed to refresh table {schema_name}.{table_name}.')
         else:
-            print('Conexão não estabelecida, conecte-se ao banco de dados.')
+            print('No connection established, connect to the database.')
 
     def drop_materialized_view(self, schema_name: str, table_name: str):
         """
-        Remove uma view materializada.
+        Removes a materialized view.
 
         Args:
-            schema_name: Nome do esquema.
-            table_name: Nome da tabela (view materializada).
+            schema_name: Name of the schema.
+            table_name: Name of the table (materialized view).
         """
         if self.connection != '':
             try:
                 self.connection.execute(f"DROP MATERIALIZED VIEW IF EXISTS {schema_name}.{table_name}")
-                print(f'View materializada {schema_name}.{table_name} removida com sucesso!')
+                print(f'Materialized view {schema_name}.{table_name} removed successfully!')
             except Exception as e:
-                print(f'Falha ao remover a view materializada {schema_name}.{table_name}.')
+                print(f'Failed to remove materialized view {schema_name}.{table_name}.')
         else:
-            print('Conexão não estabelecida, conecte-se ao banco de dados.')
+            print('No connection established, connect to the database.')
 
     def add_data_to_table(self, schema_name: str, table_name: str, data: dict):
         """
-        Adiciona dados a uma tabela.
+        Adds data to a table.
 
         Args:
-            schema_name: Nome do esquema.
-            table_name: Nome da tabela.
-            data: Dicionário contendo os dados a serem inseridos na tabela.
+            schema_name: Name of the schema.
+            table_name: Name of the table.
+            data: Dictionary containing the data to be inserted into the table.
         """
         if self.connection != '':
             try:
@@ -234,65 +234,65 @@ class DataBase:
                 values = ', '.join([f"'{value}'" for value in data.values()])
                 query = f"INSERT INTO {schema_name}.{table_name} ({columns}) VALUES ({values})"
                 self.connection.execute(query)
-                print(f'Dados adicionados à tabela {schema_name}.{table_name} com sucesso!')
+                print(f'Data added to table {schema_name}.{table_name} successfully!')
             except Exception as e:
-                print(f'Falha ao adicionar dados à tabela {schema_name}.{table_name}.')
+                print(f'Failed to add data to table {schema_name}.{table_name}.')
         else:
-            print('Conexão não estabelecida, conecte-se ao banco de dados.')
+            print('No connection established, connect to the database.')
 
     def remove_data_from_table(self, schema_name: str, table_name: str, condition: str):
         """
-        Remove dados de uma tabela.
+        Removes data from a table.
 
         Args:
-            schema_name: Nome do esquema.
-            table_name: Nome da tabela.
-            condition: Condição para filtrar os dados a serem removidos.
+            schema_name: Name of the schema.
+            table_name: Name of the table.
+            condition: Condition to filter the data to be removed.
         """
         if self.connection != '':
             try:
                 query = f"DELETE FROM {schema_name}.{table_name} WHERE {condition}"
                 self.connection.execute(query)
-                print(f'Dados removidos da tabela {schema_name}.{table_name} com sucesso!')
+                print(f'Data removed from table {schema_name}.{table_name} successfully!')
             except Exception as e:
-                print(f'Falha ao remover dados da tabela {schema_name}.{table_name}.')
+                print(f'Failed to remove data from table {schema_name}.{table_name}.')
         else:
-            print('Conexão não estabelecida, conecte-se ao banco de dados.')
+            print('No connection established, connect to the database.')
 
     def update_data_in_table(self, table_name: str, filters: dict, new_data: dict):
         """
-        Atualiza um dado na tabela.
+        Updates a data in the table.
 
         Args:
-            table_name: Nome da tabela.
-            filters: Dicionário contendo os filtros para a cláusula WHERE.
-            new_data: Dicionário contendo os novos dados a serem atualizados.
+            table_name: Name of the table.
+            filters: Dictionary containing the filters for the WHERE clause.
+            new_data: Dictionary containing the new data to be updated.
         """
         if self.connection != '':
             try:
-                # Constrói a cláusula WHERE com base nos filtros
+                # Construct the WHERE clause based on the filters
                 where_clause = ' AND '.join([f"{key} = '{value}'" for key, value in filters.items()])
-                # Constrói a cláusula SET com base nos novos dados
+                # Construct the SET clause based on the new data
                 set_clause = ', '.join([f"{key} = '{value}'" for key, value in new_data.items()])
                 query = f"UPDATE {table_name} SET {set_clause} WHERE {where_clause}"
                 self.connection.execute(query)
-                print(f'Dados atualizados na tabela {table_name} com sucesso!')
+                print(f'Data updated in table {table_name} successfully!')
             except Exception as e:
-                print(f'Falha ao atualizar dados na tabela {table_name}.')
+                print(f'Failed to update data in table {table_name}.')
         else:
-            print('Conexão não estabelecida, conecte-se ao banco de dados.')
+            print('No connection established, connect to the database.')
 
     def select_from_table(self, table_name: str, columns: Optional[List[str]] = None, filters: Optional[Dict[str, Any]] = None, order_by: Optional[str] = None) -> List[Tuple]:
         """
-        Seleciona dados de uma tabela.
+        Selects data from a table.
 
         Args:
-            table_name: Nome da tabela.
-            columns: Lista de colunas a serem selecionadas. Se não especificado, serão selecionadas todas as colunas.
-            filters: Dicionário contendo os filtros para a cláusula WHERE. Cada chave representa o nome da coluna e o valor representa o valor a ser filtrado.
-            order_by: String contendo o campo e a classificação para ordenação. Exemplo: 'id ASC'
+            table_name: Name of the table.
+            columns: List of columns to be selected. If not specified, all columns will be selected.
+            filters: Dictionary containing the filters for the WHERE clause. Each key represents the column name and the value represents the filter value.
+            order_by: String containing the field and classification for ordering. Example: 'id ASC'
         Returns:
-            Uma lista de tuplas contendo os dados selecionados.
+            A list of tuples containing the selected data.
         """
         if self.connection != '':
             try:
@@ -302,48 +302,49 @@ class DataBase:
                 result = self.connection.execute(query)
                 return result.fetchall()
             except Exception as e:
-                print(f'Falha ao buscar dados na tabela {table_name}.')
+                print(f'Failed to fetch data from table {table_name}.')
         else:
-            print('Conexão não estabelecida, conecte-se ao banco de dados.')
-            
+            print('No connection established, connect to the database.')
+
+    
     def execute_query(self, query: str) -> List[Tuple]:
         """
-        Executa uma consulta SQL.
+        Executes an SQL query.
 
         Args:
-            query: Consulta SQL a ser executada.
+            query: SQL query to be executed.
         """
         if self.connection != '':
             try:
                 result = self.connection.execute(query)
-                print('Consulta executada com sucesso!')
+                print('Query executed successfully!')
                 return result.fetchall()
             except Exception as e:
-                print('Falha ao executar a consulta.')
+                print('Failed to execute the query.')
         else:
-            print('Conexão não estabelecida, conecte-se ao banco de dados.')
+            print('No connection established, connect to the database.')
 
     
     def schema_exists(self, schema_name: str):
         """
-        Verifica se um esquema existe no banco de dados.
+        Checks if a schema exists in the database.
 
         Args:
-            schema_name: Nome do esquema a ser verificado.
+            schema_name: Name of the schema to be checked.
         Returns:
-            True se o esquema existe, False caso contrário.
+            True if the schema exists, False otherwise.
         """
         inspector = inspect(self.engine)
         return schema_name in inspector.get_schema_names()
 
     def table_exists(self, schema_name: str, table_name: str):
         """
-        Verifica se uma tabela existe no banco de dados.
+        Checks if a table exists in the database.
 
         Args:
-            schema_name: Nome do esquema que contém a tabela.
+            schema_name: Name of the schema that contains the table.
         Returns:
-            True se a tabela existe, False caso contrário.
+            True if the table exists, False otherwise.
         """
         inspector = inspect(self.engine)
         return inspector.has_table(table_name, schema=schema_name)
