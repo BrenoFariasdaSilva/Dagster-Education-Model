@@ -1,8 +1,8 @@
 from setuptools import find_packages, setup
 
 setup(
-    name="modelo_dtw_educacao",
-    packages=find_packages(exclude=["tutorial_notebook_assets"]),
+    name="education_model",
+    packages=find_packages(exclude=[""]),
     install_requires=[
         "dagster",
         "dagstermill",
