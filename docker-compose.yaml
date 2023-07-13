@@ -1,0 +1,18 @@
+version: "3"
+services:
+  postgres:
+    image: postgres
+    container_name: some-postgres
+    environment:
+      - POSTGRES_PASSWORD=senha123
+    networks:
+      mynetwork:
+        ipv4_address: 172.12.0.10
+    restart: unless-stopped
+
+networks:
+  mynetwork:
+    ipam:
+      config:
+        - subnet: 172.12.0.0/16
+
