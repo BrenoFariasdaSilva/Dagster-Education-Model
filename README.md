@@ -31,6 +31,7 @@ Now that you have Python 3.7.17 installed, the Dagster dependencies and the pyen
 cd Dagster-Educacao # Enters the project folder
 make dependecies # Installs the project dependencies, such as:
 # Install Python dependencies of the model -> pandas, matplotlib, seaborn and scikit-learn.
+# Install the database module dependencies -> psycopg2-binary and sqlalchemy, etc.
 # Install Docker and Docker-Compose.
 # Build the docker-compose.
 ```
