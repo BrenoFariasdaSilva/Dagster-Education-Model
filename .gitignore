@@ -332,5 +332,5 @@ scripts/.build
 
 /Dagster-Educacao/tmp*
 
-/Dagster-Educacao/modelo_educacao/output/
-/Dagster-Educacao/modelo_educacao/data/
+/Dagster-Educacao/education_model/output/
+/Dagster-Educacao/education_model/data/
