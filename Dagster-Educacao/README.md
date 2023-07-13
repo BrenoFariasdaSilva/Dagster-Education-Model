@@ -1,30 +1,43 @@
 # Dagster-EducationModel
 
-Este exemplo é feito como a tradução do modelo de educação do Jupyer notebook para o Dagster.
+This example is a translation of the Jupyter notebook education model to Dagster.
 
 ---
 
+## Project Files Structure:
+There are two levels of folders in this project. The first level is the project folder (root), and the second level is the Dagster folder (translated model). The project folder contains the files that are related setting up the python to a specific version (3.7.17) and dagster depencies. The Dagster folder contains the files that are related to Dagster project. Each folder level have a README.md file and a Makefile file.
+
 ## Install Dependencies:
-#### Dagster Dependencies:
-Você pode executar o comando abaixo para instalar as dependencias do projeto.
+### Pre-requisites:
+First you need to run the `prerequisites.sh` file to install the project dependencies, such as `python`, `homebrew` and `node`. This file will install the `pyenv` and `pyenv-virtualenv` to manage the Python versions and virtual environments. The `homebrew` will be installed as package manager for the dagster packages. Lastly, the `node` is installed for the use of the website, in which we will have the dagster UI.
 
 ```shell
-	chmod +x ./prerequisites.sh # Irá dar permissão de execução para o arquivo
-	./prerequisites.sh # Irá instalar as dependencias do projeto
-	chmod +x ./backend.sh # Irá dar permissão de execução para o arquivo
-	./backend.sh # Irá instalar as dependencias do projeto
+chmod +x ./prerequisites.sh # Gives execution permission to the file
+./prerequisites.sh # Installs project dependencies
 ```
-#### Python Dependencies:
-Agora que você já tem o Python 3.7.17 instalado e as dependencias do Dagster, abra um terminal novo e execute os comandos abaixo para iniciar o Dagster.
+
+### Backend:
+Now you need to run the `backend.sh` file (also located in the root directory of the project), which will create the python virtual environment and install the dagster packages, install `yarn`, the python modules and `dagit` (dagster UI).
+```shell
+chmod +x ./backend.sh # Gives execution permission to the file
+./backend.sh # Installs project dependencies
+```
+Great, the dagster dependencies are installed. Now we need to install the project/model dependencies, located in `Dagster-Educacao/` folder.
+
+### Model Dependencies:
+Now that you have Python 3.7.17 installed, the Dagster dependencies and the pyenv virtual environment created, open a new terminal in the `Dagster-Educacao/` folder and execute the following makefile rule:
 
 ```shell
-	cd Dagster-Educacao # Irá entrar na pasta do projeto
-	pyenv activate dagster-dtwy # Irá ativar o ambiente virtual do Python
-	make dependencies # Irá instalar o pandas, matplotlib, seaborn e scikit-learn
+cd Dagster-Educacao # Enters the project folder
+make dependecies # Installs the project dependencies, such as:
+# Install Python dependencies of the model -> pandas, matplotlib, seaborn and scikit-learn.
+# Install Docker and Docker-Compose.
+# Build the docker-compose.
 ```
-
+Now you have the project dependencies installed. Let's run the model.
 ## How to Run:
-Neste ponto, você pode abrir a IU do Dagster e ver a execução do código.
+At this point, you can simply run the following command to run the model:
 ```shell
-clear; dagster dev -h 0.0.0.0 -p 3000 # Irá iniciar a IU do Dagster
+make dagster # Runs the model
 ```
+This will run the dagster dev command, which will be executed on port 3000 and receive requests from any host. You can access the dagster UI by accessing the following link: http://localhost:3000.
