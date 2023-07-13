@@ -1,3 +1,6 @@
+# Author: Breno Farias da Silva
+# Last update: 13/07/2023
+
 # Set the pyenv environment
 export PYENV_VERSION=dagster-dtw
 
@@ -5,6 +8,7 @@ export PYENV_VERSION=dagster-dtw
 all:
 	dependencies docker docker_compose dagster
 
+# Install the external project dependencies (Not related to dagster, but to the model):
 dependencies:
 	clear;
 	pip install pandas matplotlib seaborn scikit-learn
