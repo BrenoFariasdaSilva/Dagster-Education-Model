@@ -11,10 +11,13 @@ all:
 # Install the external project dependencies (Not related to dagster, but to the model):
 dependencies:
 	clear;
+	echo "Installing the external project dependencies...";
 	pip install pandas matplotlib seaborn scikit-learn
+	echo "External project dependencies installed!";
 
 # Install Docker and Docker Compose:
 docker:
+	echo "Installing Docker and Docker Compose...";
 	sudo apt update -y
 	sudo apt-get install \
 	apt-transport-https \
@@ -38,12 +41,16 @@ docker:
 	sudo systemctl enable docker.service
 	sudo systemctl enable containerd.service
 	sudo docker rm hello-world-container
+	echo "Docker and Docker Compose installed!";
 
 # Run Docker Compose:
 docker_compose:
+	echo "Running Docker Compose...";
 	docker-compose up -d
+	echo "Docker Compose running!";
 
 # Run the dagster project:
 dagster:
 	clear;
+	echo "Running the dagster project...";
 	dagster dev -h 0.0.0.0 -p 3000
