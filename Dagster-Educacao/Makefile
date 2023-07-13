@@ -30,6 +30,10 @@ docker:
 	sudo systemctl enable containerd.service
 	sudo docker rm hello-world-container
 
+# Run Docker Compose:
+docker_compose:
+	docker-compose up -d
+
 dependencies:
 	clear;
 	pip install pandas matplotlib seaborn scikit-learn
