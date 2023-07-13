@@ -39,6 +39,6 @@ Now you have the project dependencies installed. Let's run the model.
 ## How to Run:
 At this point, you can simply run the following command to run the model:
 ```shell
-make dagster # Runs the model
+make dagster # Run the dagster model
 ```
 This will run the dagster dev command, which will be executed on port 3000 and receive requests from any host. You can access the dagster UI by accessing the following link: http://localhost:3000.
