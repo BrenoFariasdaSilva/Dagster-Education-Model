@@ -23,20 +23,20 @@ def read_escolas_csv(context):
 
 @op
 def validate_output_folder(context):
-    if not os.path.exists('./education_model/output'):
-        os.makedirs('./education_model/output')
+    if not os.path.exists('./education_model/processed_data'):
+        os.makedirs('./education_model/processed_data')
 
 @op
 def analyze_fundamental_qtd(context, escolas):
     sns.boxplot(data=escolas, x="bairro_zona", y="fundamental_qtd")
-    plt.savefig('./education_model/output/01-fundamental_qtd_boxplot.png')
+    plt.savefig('./education_model/processed_data/01-fundamental_qtd_boxplot.png')
     plt.close()
     fundamental_qtd_desc = escolas["fundamental_qtd"].describe().to_dict()
 
 @op
 def analyze_infantil_qtd(context, escolas):
     sns.boxplot(data=escolas, x="bairro_zona", y="infantil_qtd")
-    plt.savefig('./education_model/output/02-infantil_qtd_boxplot.png')
+    plt.savefig('./education_model/processed_data/02-infantil_qtd_boxplot.png')
     plt.close()
     infantil_qtd_desc = escolas["infantil_qtd"].describe().to_dict()
 
@@ -55,7 +55,7 @@ def filter_data(context, escolas):
     df = pd.concat([inf, fund], ignore_index=True)
     # save the df into an image
     sns.boxplot(data=df, x="bairro_zona", y="qtd", hue="tipo")
-    plt.savefig('./education_model/output/03-combined_qtd_boxplot.png')
+    plt.savefig('./education_model/processed_data/03-combined_qtd_boxplot.png')
     return df
     # yield AssetMaterialization(asset_key='filtered_data', description='Filtered data', metadata={'length': len(df)})
     # yield Out(value=df, asset_key='filtered_data')
@@ -64,7 +64,7 @@ def filter_data(context, escolas):
 def analyze_combined_qtd(context, filtered_data):
     # sns.boxplot(data=filtered_data, x="bairro_zona", y="qtd", hue="tipo")
     sns.boxplot(data=filtered_data, x="bairro_zona", y="qtd")
-    plt.savefig('./education_model/output/04-combined_qtd_boxplot.png')
+    plt.savefig('./education_model/processed_data/04-combined_qtd_boxplot.png')
     plt.close()
     combined_qtd_desc = filtered_data.describe().to_dict()
     print(combined_qtd_desc)
@@ -89,7 +89,7 @@ def analyze_infantil_prof_aux_corr(context, infantil_only):
     infantil_only = infantil_only.astype({'auxiliares_qtd':'int'})
     infantil_only = infantil_only.astype({'professores_qtd':'int'})
     sns.scatterplot(data=infantil_only, x="professores_qtd", y="auxiliares_qtd")
-    plt.savefig('./education_model/output/05-infantil_prof_aux_corr_scatterplot.png')
+    plt.savefig('./education_model/processed_data/05-infantil_prof_aux_corr_scatterplot.png')
     plt.close()
     corr_value = infantil_only["professores_qtd"].corr(infantil_only["auxiliares_qtd"], method='spearman')
     # yield AssetMaterialization(asset_key='infantil_prof_aux_corr_scatterplot', description='Scatterplot of infantil professors vs auxiliares', metadata={'correlation': corr_value})
@@ -105,7 +105,7 @@ def analyze_infantil_prof_aux_regression(context, infantil_only):
     regressor.fit(X, y)
     plt.scatter(X, y, color='g')
     plt.plot(X, regressor.predict(X), color='k')
-    plt.savefig('./education_model/output/06-infantil_prof_aux_regression.png')
+    plt.savefig('./education_model/processed_data/06-infantil_prof_aux_regression.png')
     plt.close()
     r_sq = regressor.score(X, y)
     coefficient = regressor.coef_[0][0]
