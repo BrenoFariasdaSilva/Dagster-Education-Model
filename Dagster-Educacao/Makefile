@@ -1,11 +1,9 @@
 # Set the pyenv environment
 export PYENV_VERSION=dagster-dtw
 
+# Run all of the makefile rules:
 all:
-	clear;
-	docker-compose up -d
-	# Make sure you are inside "dagster-dtwy" virtual environment with "pyenv activate dagster-dtwy".
-	dagster dev -h 0.0.0.0 -p 3000
+	dependencies docker docker_compose dagster
 
 dependencies:
 	clear;
