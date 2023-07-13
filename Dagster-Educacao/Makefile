@@ -12,15 +12,21 @@ all:
 dependencies:
 	clear;
 	echo "Installing the external project dependencies...";
-	python_dependencies docker docker_compose
+	python_dependencies database_module_dependencies docker docker_compose
 	echo "External project dependencies installed!";
 
 # Install the python dependencies:
 python_dependencies:
-	clear;
 	echo "Installing the python dependencies...";
 	pip install pandas matplotlib seaborn scikit-learn
 	echo "Python dependencies installed!";
+
+# Install the dagster dependencies:
+database_module_dependencies:
+	echo "Installing the database dependencies...";
+	cd dataBaseModule;
+	pip install -r requirements.txt;
+	echo "Database dependencies installed!";
 
 # Install Docker and Docker Compose:
 docker:
