@@ -6,14 +6,21 @@ export PYENV_VERSION=dagster-dtw
 
 # Run all of the makefile rules:
 all:
-	dependencies docker docker_compose dagster
+	dependencies dagster
 
 # Install the external project dependencies (Not related to dagster, but to the model):
 dependencies:
 	clear;
 	echo "Installing the external project dependencies...";
-	pip install pandas matplotlib seaborn scikit-learn
+	python_dependencies docker docker_compose
 	echo "External project dependencies installed!";
+
+# Install the python dependencies:
+python_dependencies:
+	clear;
+	echo "Installing the python dependencies...";
+	pip install pandas matplotlib seaborn scikit-learn
+	echo "Python dependencies installed!";
 
 # Install Docker and Docker Compose:
 docker:
