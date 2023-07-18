@@ -1,4 +1,4 @@
-Edu<div align="center">
+<div align="center">
   
 # [Dagster-EducationModel](https://github.com/BrenoFariasdaSilva/Dagster-EducationModel)
 
