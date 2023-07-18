@@ -1,6 +1,6 @@
 <div align="center">
   
-# [Dagster - Education Model.](https://github.com/BrenoFariasdaSilva/Dagster-EducationModel) <img src="https://github.com/BrenoFariasdaSilva/Dagster-Education-Model/blob/main/assets/Dagster.svg"  width="10%" height="10%">
+# [Dagster - Education Model.](https://github.com/BrenoFariasdaSilva/Dagster-EducationModel) <img src="https://github.com/BrenoFariasdaSilva/Dagster-Education-Model/blob/main/assets/Dagster.svg"  width="11%" height="11%">
 
 </div>
 
