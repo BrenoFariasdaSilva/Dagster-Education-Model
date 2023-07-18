@@ -4,6 +4,15 @@
 
 </div>
 
+<div align="center">
+  
+---
+#### This repository is a translation of a Jupyter notebook education model to Dagster, in which uses Dagster 1.3.11 and Python 3.7.17.
+#### Dagster is a data orchestrator for machine learning, analytics, and ETL. It lets you define pipelines in terms of the data flow between reusable, logical components, then test locally and run anywhere. With a unified view of pipelines and the assets they produce, Dagster can schedule and orchestrate Pandas, Spark, SQL, or anything else that Python can invoke. It abstracts away the infrastructure details and job execution, so that you can focus on what matters: building data applications. For more information, please visit the [Dagster website](https://dagster.io/).
+---
+
+</div>
+
 <p align="center">
   <img src="https://wakatime.com/badge/github/BrenoFariasdaSilva/Dagster-Education-Model.svg" alt="wakatime" />
 </p>
@@ -13,11 +22,6 @@
 ![RepoBeats Statistics](https://repobeats.axiom.co/api/embed/3700f27eca742f62d0283c9d6cdaf81274fc50b8.svg "Repobeats analytics image")
 
 </div>
-
----
-#### This repository is a translation of a Jupyter notebook education model to Dagster, in which uses Dagster 1.3.11 and Python 3.7.17.
-#### Dagster is a data orchestrator for machine learning, analytics, and ETL. It lets you define pipelines in terms of the data flow between reusable, logical components, then test locally and run anywhere. With a unified view of pipelines and the assets they produce, Dagster can schedule and orchestrate Pandas, Spark, SQL, or anything else that Python can invoke. It abstracts away the infrastructure details and job execution, so that you can focus on what matters: building data applications. For more information, please visit the [Dagster website](https://dagster.io/).
----
 
 ## Project Files Structure:
 There are two levels of folders in this project. The first level is the project folder (root), and the second level is the Dagster folder (translated model). The project folder contains the files that are related setting up the python to a specific version (3.7.17) and dagster depencies. The Dagster folder contains the files that are related to Dagster project. Each folder level have a README.md file and a Makefile file.
