@@ -23,6 +23,7 @@
 
 </div>
 
+## Table of Contents
 - [Dagster - Education Model.](#dagster---education-model)
   - [Project Files Structure:](#project-files-structure)
   - [Install Dependencies:](#install-dependencies)
