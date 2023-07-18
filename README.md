@@ -1,8 +1,12 @@
-<div align="center">
+Edu<div align="center">
   
 # [Dagster-EducationModel](https://github.com/BrenoFariasdaSilva/Dagster-EducationModel)
 
 </div>
+
+<p align="center">
+  <img src="https://wakatime.com/badge/github/BrenoFariasdaSilva/Dagster-Education-Model.svg" alt="wakatime" />
+</p>
 
 <div align="center">
   
