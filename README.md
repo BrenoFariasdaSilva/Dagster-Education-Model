@@ -14,6 +14,8 @@
 </div>
 
 <p align="center">
+  <img src="https://img.shields.io/github/last-commit/BrenoFariasdaSilva/Dagster-Education-Model" alt="lastcommit" />
+  <img src="https://img.shields.io/github/license/BrenoFariasdaSilva/Dagster-Education-Model" alt="license" />
   <img src="https://wakatime.com/badge/github/BrenoFariasdaSilva/Dagster-Education-Model.svg" alt="wakatime" />
 </p>
 
