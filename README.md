@@ -11,6 +11,8 @@
 #### Dagster is a data orchestrator for machine learning, analytics, and ETL. It lets you define pipelines in terms of the data flow between reusable, logical components, then test locally and run anywhere. With a unified view of pipelines and the assets they produce, Dagster can schedule and orchestrate Pandas, Spark, SQL, or anything else that Python can invoke. It abstracts away the infrastructure details and job execution, so that you can focus on what matters: building data applications. For more information, please visit the [Dagster website](https://dagster.io/).
 ---
 
+</div>
+
 <div align="center">
 
 ![GitHub Code Size in Bytes](https://img.shields.io/github/languages/code-size/BrenoFariasdaSilva/Dagster-Education-Model)
@@ -27,7 +29,6 @@
 </div>
 
 ## Table of Contents
-- [Dagster - Education Model.](#dagster---education-model)
   - [Project Files Structure:](#project-files-structure)
   - [Install Dependencies:](#install-dependencies)
     - [Pre-requisites:](#pre-requisites)
