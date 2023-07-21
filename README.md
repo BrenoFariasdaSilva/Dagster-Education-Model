@@ -11,13 +11,14 @@
 #### Dagster is a data orchestrator for machine learning, analytics, and ETL. It lets you define pipelines in terms of the data flow between reusable, logical components, then test locally and run anywhere. With a unified view of pipelines and the assets they produce, Dagster can schedule and orchestrate Pandas, Spark, SQL, or anything else that Python can invoke. It abstracts away the infrastructure details and job execution, so that you can focus on what matters: building data applications. For more information, please visit the [Dagster website](https://dagster.io/).
 ---
 
-</div>
+<div align="center">
 
-<p align="center">
-  <img src="https://img.shields.io/github/last-commit/BrenoFariasdaSilva/Dagster-Education-Model" alt="lastcommit" />
-  <img src="https://img.shields.io/github/license/BrenoFariasdaSilva/Dagster-Education-Model" alt="license" />
-  <img src="https://wakatime.com/badge/github/BrenoFariasdaSilva/Dagster-Education-Model.svg" alt="wakatime" />
-</p>
+![GitHub Code Size in Bytes](https://img.shields.io/github/languages/code-size/BrenoFariasdaSilva/Dagster-Education-Model)
+![GitHub Last Commit](https://img.shields.io/github/last-commit/BrenoFariasdaSilva/Dagster-Education-Model)
+![GitHub](https://img.shields.io/github/license/BrenoFariasdaSilva/Dagster-Education-Model)
+![wakatime](https://wakatime.com/badge/github/BrenoFariasdaSilva/Dagster-Education-Model.svg)
+
+</div>
 
 <div align="center">
   
